@@ -1,0 +1,35 @@
+{
+  "name": "jwt_app",
+  "version": "1.0.0",
+  "description": "app per gestire le recensioni sui drink offerti dai pub registrati",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "env-cmd -f ./.env nodemon src/app.js"
+  },
+  "keywords": [],
+  "author": "Navjot",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Bizzarro20/DrinkAdvisor.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Bizzarro20/DrinkAdvisor/issues"
+  },
+  "homepage": "https://github.com/Bizzarro20/DrinkAdvisor#readme",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "ejs": "^3.1.3",
+    "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
+    "mongodb": "^3.5.8",
+    "mongoose": "^5.9.16",
+    "validator": "^13.0.0",
+    "yarn": "^1.22.4"
+  },
+  "devDependencies": {
+    "env-cmd": "^10.1.0",
+    "nodemon": "^2.0.4"
+  }
+}

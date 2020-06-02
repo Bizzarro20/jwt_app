@@ -1,29 +1,30 @@
-//qui mettero i router per i pub
+//qui mettero i router per i review
 // tutte le loro richieste
 
 const express = require('express')
-const Pub = require('../models/Pub')
-const auth = require('../middleware/auth_pub')
+const Review = require('../models/Review')
+const User = require('../models/User')
+const auth = require('../middleware/auth_user')
 
 const router = express.Router() //definisco il router per fare get e post della app
 
-router.post('/pubs', async (req, res) => {
-    // Create a new pub
+router.post('/review', async (req, res) => {
+    // Create a new review
     try {
-        const pub = new Pub(req.body)     //def pub con body della richiesta, genero quindi utente
-        await pub.save()           //cripta pwd .. salva nel db?
-        const token = await pub.generateAuthToken()
-        res.status(201).send({ pub, token })   //rimanda indietro pub e token ... quindi posso salvare ciò che ritornato e usarlo
-    } catch (error) {                       //nota ritornando pub mi ritorna già una liista di token ovver il token
+        const review = new Review(req.body)     //ricevo una richiesta per inserire la recensione
+        await review.save()           //salva nel db?
+        res.status(201).send({ review})   //rimanda indietro review  ... quindi posso salvare ciò che ritornato e usarlo
+    } catch (error) {                       //nota ritornando review
         res.status(400).send(error)
     }
 })
 
-router.post('/pubs/login', async(req, res) => {
-    //Login a registered pub
+/*
+router.post('/reviews/login', async(req, res) => {
+    //Login a registered review
     try {
         const { email, password } = req.body
-        const pub = await Pub.findByCredentials(email, password)
+        const review = await Review.findByCredentials(email, password)
         if (!pub) {
             return res.status(401).send({error: 'Login failed! Check authentication credentials'})
         }
@@ -73,5 +74,6 @@ router.post('/pubs/me/logoutall', auth, async(req, res) => {
     }
 })
 //elimina tutti i token
+*/
 
 module.exports = router;

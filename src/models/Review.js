@@ -7,7 +7,8 @@ const jwt = require('jsonwebtoken')
 
 const reviewSchema = mongoose.Schema({
     timestamp: {
-        type: Date
+        type: Date,
+        default: Date.now()
     },
     user: {
         type: String,
@@ -24,6 +25,9 @@ const reviewSchema = mongoose.Schema({
     rank: {
         type: Number,
         required: true
+    },
+    comment: {
+        type: String
     }
 })
 

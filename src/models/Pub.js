@@ -27,6 +27,14 @@ const pubSchema = mongoose.Schema({
         required: true,
         minLength: 7
     },
+/*
+    drinks: [{
+        drink: {
+            type: String,  //id
+            type: String,   //nome drink
+            unique: true
+        }
+    }],*/
     tokens: [{          //una lista di token perchè posso avere un token per ogni dispositivo
         token: {        //ogni token è stringa e required
             type: String,

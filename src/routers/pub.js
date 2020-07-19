@@ -60,8 +60,6 @@ router.post('/pubs/me/logout', auth, async (req, res) => {
     }
 })
 //elimina il token cosi non posso più accedere ai dati
-
-
 router.post('/pubs/me/logoutall', auth, async(req, res) => {
     // Log pub out of all devices
     try {
@@ -73,5 +71,37 @@ router.post('/pubs/me/logoutall', auth, async(req, res) => {
     }
 })
 //elimina tutti i token
+
+
+//inserisci un drink nel catalogo
+//
+/*
+router.get('/pubs/add_drink', auth, async (req, res) => {
+    try {
+        pub.tokens = pub.drinks.concat({req})
+        res.send(res)
+    } catch (error) {
+        res.status(500).send(error)
+    }
+})*/
+
+router.get('/pubs/all',async(req, res) => {  //una richiesta per ottenere info (quindi devo passarchi auth
+    // View logged in pub profile
+    //res.send(req.pub)
+    try {
+        const pub = await Pub.find({"ditta": {$exists: true}});
+        //const review = await Review.find({"pub": pub});
+        console.log(pub);
+        if (!pub) {
+            return res.status(401).send({error: 'Login failed! Check authentication credentials'})
+        }
+        res.send({ pub })
+    } catch (error) {
+        res.status(400).send(error)
+    }
+
+});
+
+
 
 module.exports = router;

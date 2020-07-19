@@ -37,6 +37,25 @@ router.get('/users/me', auth, async(req, res) => {  //una richiesta per ottenere
     // View logged in user profile
     res.send(req.user)
 });
+
+router.get('/users/all', async(req, res) => {  //una richiesta per ottenere info (quindi devo passarchi auth
+    // View logged in user profile
+    try {
+        const u = req.body;
+        const user = await User.find({"ditta": {$exists: true}});
+        console.log(u);
+        //const review = await Review.find({"pub": pub});
+        console.log(user);
+        if (!user) {
+            return res.status(401).send({error: 'Login failed! Check authentication credentials'})
+        }
+        res.send({ user })
+    } catch (error) {
+        res.status(400).send(error)
+    }
+});
+
+
 //cosa succede quindi .. quando faccio users/me ... esegue auth con i dati che gli passo
 //nel header prende il token (toglie bearer) e verifica il token
 //e cerca quel _id e token .. se c'è fa next .. ovvero ritorna in questa

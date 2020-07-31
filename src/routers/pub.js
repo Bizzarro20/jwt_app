@@ -1,5 +1,4 @@
-//qui mettero i router per i pub
-// tutte le loro richieste
+//GESTIONE RICHIESTE
 
 const express = require('express')
 const Pub = require('../models/Pub')
@@ -91,7 +90,6 @@ router.get('/pubs/all',async(req, res) => {  //una richiesta per ottenere info (
     try {
         const pub = await Pub.find({"ditta": {$exists: true}});
         //const review = await Review.find({"pub": pub});
-        console.log(pub);
         if (!pub) {
             return res.status(401).send({error: 'Login failed! Check authentication credentials'})
         }

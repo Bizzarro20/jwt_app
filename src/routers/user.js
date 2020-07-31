@@ -1,3 +1,5 @@
+//GESTIONE RICHIESTE
+
 const express = require('express')
 const User = require('../models/User')
 const auth = require('../middleware/auth_user')
@@ -42,10 +44,8 @@ router.get('/users/all', async(req, res) => {  //una richiesta per ottenere info
     // View logged in user profile
     try {
         const u = req.body;
-        const user = await User.find({"ditta": {$exists: true}});
-        console.log(u);
+        const user = await User.find({"name": {$exists: true}});
         //const review = await Review.find({"pub": pub});
-        console.log(user);
         if (!user) {
             return res.status(401).send({error: 'Login failed! Check authentication credentials'})
         }

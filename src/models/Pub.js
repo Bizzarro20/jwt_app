@@ -1,4 +1,4 @@
-//modello per pub
+//MODELLO DI UN PUB
 
 const mongoose = require('mongoose')
 const validator = require('validator')
@@ -25,7 +25,7 @@ const pubSchema = mongoose.Schema({
     password: {
         type: String,
         required: true,
-        minLength: 7
+        minLength: 6
     },
 /*
     drinks: [{

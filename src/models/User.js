@@ -1,3 +1,5 @@
+//MODELLO DI UN USER
+
 const mongoose = require('mongoose')
 const validator = require('validator')
 const bcrypt = require('bcryptjs')
@@ -23,7 +25,7 @@ const userSchema = mongoose.Schema({
     password: {
         type: String,
         required: true,
-        minLength: 7        //NON FUNZIONA !!!!!!!!    funziona min = 7,
+        minLength: 6        //NON FUNZIONA !!!!!!!!    funziona min = 7,
     },
     tokens: [{          //una lista di token perchè posso avere un token per ogni dispositivo
         token: {        //ogni token è stringa e required

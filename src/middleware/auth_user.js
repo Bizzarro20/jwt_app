@@ -1,9 +1,7 @@
-//fa da ponte con il database
+//GESTIONE AUTORIZZAZIONE USER
+// fa da ponte con il database
 //serve per fare quelle cose che servono (controlli) prima che la richiesta arrivi
 //al server e che il server ritorni la risposta
-
-//ad esempio quando uno vuole una risorsa (es recensioni), voglio verificare
-//che questa persona possa accedere (usare la funzione per ottenere quei dati)
 
 
 const jwt = require('jsonwebtoken')

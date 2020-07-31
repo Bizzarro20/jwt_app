@@ -1,4 +1,4 @@
-//in questo file viene creato il modello di una recensione
+//MODELLO DI UNA RECENSIONE
 
 const mongoose = require('mongoose')
 const validator = require('validator')

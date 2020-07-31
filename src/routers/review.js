@@ -1,5 +1,4 @@
-//qui mettero i router per i review
-// tutte le loro richieste
+//GESTIONE RICHIESTE
 
 const express = require('express')
 const Review = require('../models/Review')
@@ -30,9 +29,7 @@ router.get('/review/pub', auth2, async(req, res) => {  //una richiesta per otten
     try {
         const pub = req.body;
         const review = await Review.find({"pub": {$exists: true}});
-        console.log(pub);
         //const review = await Review.find({"pub": pub});
-        console.log(review);
         if (!pub) {
             return res.status(401).send({error: 'Login failed! Check authentication credentials'})
         }
@@ -46,9 +43,7 @@ router.get('/review/user', auth1, async(req, res) => {  //una richiesta per otte
     try {
         const user = req.body;
         const review = await Review.find({"user": {$exists: true}});
-        console.log(user);
         //const review = await Review.find({"pub": pub});
-        console.log(review);
         if (!user) {
             return res.status(401).send({error: 'Login failed! Check authentication credentials'})
         }

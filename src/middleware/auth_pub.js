@@ -1,11 +1,7 @@
-//fa da ponte con il database
+//GESTIONE AUTORIZZAZIONE PUB
+// fa da ponte con il database
 //serve per fare quelle cose che servono (controlli) prima che la richiesta arrivi
 //al server e che il server ritorni la risposta
-
-//ad esempio quando uno vuole una risorsa (es recensioni), voglio verificare
-//che questa persona possa accedere (usare la funzione per ottenere quei dati)
-
-//ne faccio uno per i pub!!!!!!!
 
 const jwt = require('jsonwebtoken')
 const Pub = require('../models/Pub')

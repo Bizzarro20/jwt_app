@@ -5,10 +5,10 @@
 //è meglio avere una collezione che contiene tutti i drink con i rispettivi pub, in modo da poter filtrare
 //anche per drink .. infatti una collezione con pub e vettore di drink non rende facile filtrare per drink.
 
-const mongoose = require('mongoose')
-const validator = require('validator')
-const bcrypt = require('bcryptjs')
-const jwt = require('jsonwebtoken')
+const mongoose = require('mongoose');
+const validator = require('validator');
+const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
 
 const catalogueSchema = mongoose.Schema({
     timestamp: {
@@ -24,17 +24,17 @@ const catalogueSchema = mongoose.Schema({
             type: String,
             required: true
         }
-})
+});
 
 
 
 catalogueSchema.pre('save', async function (next) {
     // insert in the db the catalogue
-    const catalogue = this
-    next()
-})
+    const catalogue = this;
+    next();
+});
 
 
-const Catalogue = mongoose.model('Catalogue', catalogueSchema)
+const Catalogue = mongoose.model('Catalogue', catalogueSchema);
 
-module.exports = Catalogue  //disponibile a livello globale
+module.exports = Catalogue;  //disponibile a livello globale

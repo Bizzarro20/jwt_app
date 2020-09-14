@@ -1,12 +1,12 @@
 //GESTIONE RICHIESTE
 
-const express = require('express')
-const Catalogue = require('../models/Catalogue')
-const auth1 = require('../middleware/auth_user')
-const auth2 = require('../middleware/auth_pub')
+const express = require('express');
+const Catalogue = require('../models/Catalogue');
+const auth1 = require('../middleware/auth_user');
+const auth2 = require('../middleware/auth_pub');
 
 
-const router = express.Router() //definisco il router per fare get e post della app
+const router = express.Router(); //definisco il router per fare get e post della app
 
 
 //creazione catalogo inteso come creazione di una nuova riga nel catalogo
@@ -16,13 +16,13 @@ router.post('/catalogue', auth2, async (req, res) => {
     // insert a new line in the common catalogue
 
     try {
-        const catalogue = new Catalogue(req.body)
-        await catalogue.save()
-        res.status(201).send({catalogue})
+        const catalogue = new Catalogue(req.body);
+        await catalogue.save();
+        res.status(201).send({catalogue});
     } catch (error) {
-        res.status(400).send(error)
+        res.status(400).send(error);
     }
-})
+});
 
 
 //funziona
@@ -33,11 +33,11 @@ router.get('/catalogue/pub', auth2, async(req, res) => {  //una richiesta per ot
         const pub = req.body;
         const catalogue = await Catalogue.find({"pub": {$exists: true}});
         if (!catalogue) {
-            return res.status(401).send({error: 'Login failed! Check authentication credentials'})
+            return res.status(401).send({error: 'Login failed! Check authentication credentials'});
         }
-        res.send({ catalogue })
+        res.send({ catalogue });
     } catch (error) {
-        res.status(400).send(error)
+        res.status(400).send(error);
     }
 });
 
@@ -56,11 +56,11 @@ router.get('/catalogue/all', auth1, async(req, res) => {
     try {
         const catalogue = await Catalogue.find({"pub": {$exists: true}});
         if (!catalogue) {
-            return res.status(401).send({error: 'Catalogue loading failed'})
+            return res.status(401).send({error: 'Catalogue loading failed'});
         }
-        res.send({ catalogue })
+        res.send({ catalogue });
     } catch (error) {
-        res.status(400).send(error)
+        res.status(400).send(error);
     }
 });
 

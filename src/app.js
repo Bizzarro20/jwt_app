@@ -49,9 +49,3 @@ app4.listen(port4, () => {
     console.log(`Running on port ${port4}`)
 });
 
-
-/*
-app.use(express.json());
-app.use(userRouter);        //avrò una cosa esterna invece di app.get o app.post
-                        //uso router pub quando voglio usare cose di pub (login, logout, registrazione)
-*/
